@@ -2,6 +2,9 @@ syntax = "proto3";
 
 service InventoryService {
     rpc SearchAllProducts(Empty) returns (ProductsResponse) {}
+    /* 1. passo 1: declarar uma funcao que recebe o id e retorna a lista de produtos */
+    rpc SearchProductByID(Payload) returns (ProductResponse) {} 
+    
 }
 
 message Empty{}
@@ -13,6 +16,12 @@ message ProductResponse {
     float price = 4;
     string photo = 5;
     string author = 6;
+}
+
+
+/* 1. passo 2: declaracao do tipo da variavel Payload usada no bloco acima*/
+message Payload {
+    int32 id = 1;
 }
 
 message ProductsResponse {
